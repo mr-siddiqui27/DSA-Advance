@@ -1,11 +1,19 @@
-package StringPractice;
+package Backtraking;
 
 import java.util.ArrayList;
 
 public class Maze {
     public static void main(String[] args) {
 //        System.out.println(stepsPrint(3,3, ""));
-        System.out.println(stepReturn(3,3,""));
+//        System.out.println(stepReturn2(3,3,""));
+
+
+        Boolean[][] board = {
+                {true,true,true},
+                {true,false,true},
+                {true,true,true}
+        };
+        pathWithRestriction(0,0,"",board);
     }
 
 
@@ -56,6 +64,34 @@ public class Maze {
 
         right.addAll(down);
         return right;
+    }
+
+    // including diagonal
+    public static ArrayList<String> stepReturn2(int r, int c, String p){
+        if(r==1 && c==1){
+            ArrayList<String> list = new ArrayList<>();
+            list.add(p);
+            return list;
+        }
+        ArrayList<String> ans = new ArrayList<>();
+         if(c>1) ans.addAll(stepReturn2(r,c-1,p+'R'));
+        if(r>1) ans.addAll(stepReturn2(r-1,c, p+'D'));
+        if(r>1 && c>1) ans.addAll(stepReturn2(r-1,c-1, p+'d')); // 'd'-> diagonal
+
+        return ans;
+    }
+
+    public static void pathWithRestriction(int r, int c, String p, Boolean[][] board){
+        if(r==board.length-1 && c==board[0].length-1){
+            System.out.println(p);
+            return;
+        }
+        // if reach false cell then return
+        if(!board[r][c]){
+            return;
+        }
+        if(c<board.length-1) pathWithRestriction(r,c+1,p+'R',board);
+        if(r<board[0].length-1) pathWithRestriction(r+1,c,p+'D',board);
     }
 
 
