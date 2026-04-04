@@ -90,4 +90,16 @@ public class BinarySearchTree {
         }
         prettyDisplay(node.left, level+1);
     }
+
+
+    public int diameter(Node node){
+        if(node == null ) return -1;
+        if(node.left==null & node.right==null) return 0;
+
+        int leftT = diameter(node.left);
+        int rightT = diameter(node.right);
+
+        int mid = 2 + height(node.left) + height(node.right);
+        return Math.max(leftT, Math.max(rightT,mid));
+    }
 }
