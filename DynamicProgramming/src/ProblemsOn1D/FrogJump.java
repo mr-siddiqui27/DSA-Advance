@@ -1,3 +1,5 @@
+package ProblemsOn1D;
+
 import java.util.Arrays;
 
 public class FrogJump {

@@ -1,4 +1,4 @@
-package Problems2D;
+package ProblemsOn_Grids_2D;
 
 import java.util.Arrays;
 

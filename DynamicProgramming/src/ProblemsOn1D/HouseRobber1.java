@@ -1,3 +1,5 @@
+package ProblemsOn1D;
+
 public class HouseRobber1 {
 
     // optimized
